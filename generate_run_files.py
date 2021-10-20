@@ -4,11 +4,9 @@
 
 from parflow import Run
 import shutil
-import sys
 import os
 
 model = Run("test_run", __file__)
-print(os.getcwd())
 
 #-----------------------------------------------------------------------------
 
@@ -22,6 +20,8 @@ FB_FILE = "Shangguan_200m_FBZ.pfb"
 MANN_PFB = "icom_mannings_rv50_4_7_10_dec_mann.pfb"
 INITIAL_PRESSURE_FILE = "G1_Multi_EF_ShgFBz_200m_kz01_rv50_dec_mann_25inc.out.press.08760.pfb"
 DOMAIN_DIRECTORY = "../../domain"
+# FORCING_DIRECTORY = "../../forcing/WY2003_forcing"
+FORCING_DIRECTORY = "/global/project/projectdirs/m3780/Ben_ELM/icom-modeling/forcing/WY2003_forcing"
  
 files=os.listdir(DOMAIN_DIRECTORY)
  
@@ -523,7 +523,7 @@ model.Geom.s3.Saturation.SSat =         1.0
 
 model.Geom.s4.Saturation.Alpha =        0.501
 model.Geom.s4.Saturation.N =            2.659
-#model.Geom.s4.Saturation.SRes =         0.0001
+model.Geom.s4.Saturation.SRes =         0.0001
 model.Geom.s4.Saturation.SSat =         1.0
 
 model.Geom.s5.Saturation.Alpha =        0.661
@@ -628,7 +628,7 @@ model.Patch.top.BCPressure.alltime.Value = 0.0
 model.Solver.EvapTransFileTransient = True
 
 #model.Solver.EvapTrans.FileName icom_rm_coast_PME3.pfb
-model.Solver.EvapTrans.FileName = "../../WY2003_forcing/icom_ELM_p_et"
+model.Solver.EvapTrans.FileName = f"{FORCING_DIRECTORY}/icom_ELM_p_et"
 
 #---------------------------------------------------------
 # Topo slopes
@@ -762,4 +762,3 @@ model.Solver.PrintSubsurfData =                      True
 model.write()
 model.write(file_format='yaml')
 model.write(file_format='json')
-print(os.getcwd())
