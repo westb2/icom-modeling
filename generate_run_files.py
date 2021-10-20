@@ -3,10 +3,12 @@
 #-----------------------------------------------------------------------------
 
 from parflow import Run
-from shutil import copytree
+import shutil
 import sys
+import os
 
 model = Run("test_run", __file__)
+print(os.getcwd())
 
 #-----------------------------------------------------------------------------
 
@@ -19,14 +21,23 @@ model.Process.Topology.R = 1
 FB_FILE = "Shangguan_200m_FBZ.pfb"
 MANN_PFB = "icom_mannings_rv50_4_7_10_dec_mann.pfb"
 INITIAL_PRESSURE_FILE = "G1_Multi_EF_ShgFBz_200m_kz01_rv50_dec_mann_25inc.out.press.08760.pfb"
-DOMAIN_DIRECTORY = "../domain"
-
+DOMAIN_DIRECTORY = "../../domain"
+ 
+files=os.listdir(DOMAIN_DIRECTORY)
+ 
+# iterating over all the files in
+# the source directory
+for fname in files:
+     
+    # copying the files to the
+    # destination directory
+    shutil.copy(os.path.join(DOMAIN_DIRECTORY,fname), ".")
 
 #---------------------------------------------------------
 # Copy necessary files
 #---------------------------------------------------------
 #Slope files
-copytree(DOMAIN_DIRECTORY, sys.argv[1])
+# copytree(DOMAIN_DIRECTORY, sys.argv[1])
 # copy(f"{DOMAIN_DIRECTORY}/icom_rm_coast_slopex3.pfb", ".")
 # copy(f"{DOMAIN_DIRECTORY}/icom_rm_coast_slopey3.pfb", ".")
 
@@ -751,3 +762,4 @@ model.Solver.PrintSubsurfData =                      True
 model.write()
 model.write(file_format='yaml')
 model.write(file_format='json')
+print(os.getcwd())
