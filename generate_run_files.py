@@ -760,5 +760,3 @@ model.Solver.PrintSubsurfData =                      True
 # pfwritedb $runname
 
 model.write()
-model.write(file_format='yaml')
-model.write(file_format='json')
