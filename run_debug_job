@@ -11,4 +11,4 @@ export PARFLOW_DIR=/global/project/projectdirs/parflow/cori-v3.7.0-11-gf70ce58-2
 # export PARFLOW_DIR=/global/project/projectdirs/parflow/cori-v3.9.0-2021-09-02
 source $PARFLOW_DIR/setenv.sh
 
-srun -n 256 $PARFLOW_DIR/bin/parflow test_run
+srun -n 256 $PARFLOW_DIR/bin/parflow icom
