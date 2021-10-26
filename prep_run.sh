@@ -10,7 +10,7 @@ mkdir runs/${name}
 cd runs/${name}
 cp ../../generate_run_files.py generate_run_files.py
 python3 generate_run_files.py
-rm generate_run_files.py
+# rm generate_run_files.py
 
 
 

@@ -21,7 +21,7 @@ DOMAIN_DIRECTORY = f"{PROJECT_PATH}/domain"
 FORCING_DIRECTORY = f"{PROJECT_PATH}/forcing/WY2003_forcing"
 
 
-model = Run("test_run", __file__)
+model = Run("icom", __file__)
 
 #-----------------------------------------------------------------------------
 
