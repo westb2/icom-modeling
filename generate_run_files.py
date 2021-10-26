@@ -5,6 +5,21 @@
 from parflow import Run
 import shutil
 import os
+import json
+
+
+PROJECT_PATH = os.getcwd() + "/../.."
+# with open("../../config.json") as file:
+#     config = json.load(file)
+#     PROJECT_PATH = config["project_path"]
+
+FB_FILE = "Shangguan_200m_FBZ.pfb"
+MANN_PFB = "icom_mannings_rv50_4_7_10_dec_mann.pfb"
+INITIAL_PRESSURE_FILE = "G1_Multi_EF_ShgFBz_200m_kz01_rv50_dec_mann_25inc.out.press.08760.pfb"
+DOMAIN_DIRECTORY = f"{PROJECT_PATH}/domain"
+# FORCING_DIRECTORY = "../../forcing/WY2003_forcing"
+FORCING_DIRECTORY = f"{PROJECT_PATH}/forcing/WY2003_forcing"
+
 
 model = Run("test_run", __file__)
 
@@ -16,12 +31,9 @@ model.Process.Topology.P = 16
 model.Process.Topology.Q = 16
 model.Process.Topology.R = 1
 
-FB_FILE = "Shangguan_200m_FBZ.pfb"
-MANN_PFB = "icom_mannings_rv50_4_7_10_dec_mann.pfb"
-INITIAL_PRESSURE_FILE = "G1_Multi_EF_ShgFBz_200m_kz01_rv50_dec_mann_25inc.out.press.08760.pfb"
-DOMAIN_DIRECTORY = "../../domain"
-# FORCING_DIRECTORY = "../../forcing/WY2003_forcing"
-FORCING_DIRECTORY = "/global/project/projectdirs/m3780/Ben_ELM/icom-modeling/forcing/WY2003_forcing"
+
+
+
  
 files=os.listdir(DOMAIN_DIRECTORY)
  
