@@ -10,7 +10,7 @@ data = pd.DataFrame(read_array_pfb(file)[0])
 data = np.clip(data, a_max=None, a_min=0)
 
 
-colorscale = [[0, 'white'], [1, 'mediumturquoise']]
+colorscale = [[0, 'white'], [1, 'black']]
 fig = go.Figure(
     data = go.Contour(
         z = data,
