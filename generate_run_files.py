@@ -83,24 +83,6 @@ model.ComputationalGrid.DX =	1000.0
 model.ComputationalGrid.DY =  1000.0
 model.ComputationalGrid.DZ =	200.00
 
-# TODO everything below
-
-#---------------------------------------------------------
-# The Names of the GeomInputs
-#---------------------------------------------------------
-
-model.GeomInput.Names = 'domaininput leftinput rightinput channelinput'
-
-model.GeomInput.domaininput.GeomName = 'domain'
-model.GeomInput.leftinput.GeomName = 'left'
-model.GeomInput.rightinput.GeomName = 'right'
-model.GeomInput.channelinput.GeomName = 'channel'
-
-model.GeomInput.domaininput.InputType = 'Box'
-model.GeomInput.leftinput.InputType = 'Box'
-model.GeomInput.rightinput.InputType = 'Box'
-model.GeomInput.channelinput.InputType = 'Box'
-
 #---------------------------------------------------------
 # The Names of the GeomInputs
 #---------------------------------------------------------
@@ -540,7 +522,7 @@ model.Geom.s4.Saturation.SSat =         1.0
 
 model.Geom.s5.Saturation.Alpha =        0.661
 model.Geom.s5.Saturation.N =            2.659
-model.Geom.s5.Saturation.SRes =         0.0001
+model.Geom.s5.Saturation.SRes =         0.1
 model.Geom.s5.Saturation.SSat =         1.0
 
 model.Geom.s6.Saturation.Alpha =        1.122
