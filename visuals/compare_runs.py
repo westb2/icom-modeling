@@ -3,8 +3,8 @@ import pandas as pd
 import plotly.graph_objects as go
 
 
-my_file = "../runs/jun_run/ELM_re1.out.press.00050.pfb"
-juns_file = "../runs/tcl_run/ELM_re1.out.press.00050.pfb"
+my_file = "../runs/fixed_params2/icom.out.press.00047.pfb"
+juns_file = "../runs/tcl_run/ELM_re1.out.press.00047.pfb"
 
 my_data = pd.DataFrame(read_array_pfb(my_file)[5])
 juns_data = pd.DataFrame(read_array_pfb(juns_file)[5])
