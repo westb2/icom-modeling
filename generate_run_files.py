@@ -27,8 +27,8 @@ model = Run("icom", __file__)
 
 model.FileVersion = 4
 
-model.Process.Topology.P = 16
-model.Process.Topology.Q = 16
+model.Process.Topology.P = 12
+model.Process.Topology.Q = 15
 model.Process.Topology.R = 1
 
 
@@ -329,7 +329,7 @@ model.Gravity	=			1.0
 model.TimingInfo.BaseUnit =        1
 model.TimingInfo.StartCount =      0
 model.TimingInfo.StartTime =       0
-model.TimingInfo.StopTime =        8760
+model.TimingInfo.StopTime =        24#8760
 model.TimingInfo.DumpInterval =    1
 
 model.TimeStep.Type =             "Constant"
@@ -784,4 +784,3 @@ model.Solver.PrintSubsurfData =                      True
 # pfwritedb $runname
 
 model.write()
-model.write(file_format='yaml')
