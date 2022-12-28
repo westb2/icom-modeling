@@ -132,8 +132,8 @@ model.dist(FB_FILE)
 #-----------------------------------------------------------------------------
 
 model.GeomInput.indi_input.InputType =   "IndicatorField"
-#model.GeomInput.indi_input.GeomNames    "s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 g1 g2 g3 g4 g5 g6 g7 g8 b1 b2"
-model.GeomInput.indi_input.GeomNames =   "s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 g1 g2 g3 g4 g5 g6 b1 b2"
+model.GeomInput.indi_input.GeomNames =   "s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 g1 g2 g3 g4 g5 g6 g7 g8 b1 b2"
+# model.GeomInput.indi_input.GeomNames =   "s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 g1 g2 g3 g4 g5 g6 b1 b2"
 model.Geom.indi_input.FileName =           "GLHYMPS_1.0_Multi_Efold_new.pfb"
 
 model.GeomInput.s1.Value =    1
@@ -156,8 +156,8 @@ model.GeomInput.g3.Value =    23
 model.GeomInput.g4.Value =    24
 model.GeomInput.g5.Value =    25
 model.GeomInput.g6.Value =    26
-#model.GeomInput.g7.Value =    27
-#model.GeomInput.g8.Value =    28
+model.GeomInput.g7.Value =    27
+model.GeomInput.g8.Value =    28
 
 model.GeomInput.b1.Value =    19
 model.GeomInput.b2.Value =    20
@@ -166,9 +166,9 @@ model.GeomInput.b2.Value =    20
 # Perm (values in m/hr)
 #-----------------------------------------------------------------------------
 
-#model.Geom.Perm.Names =                "domain s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 g1 g2 g3 g4 g5 g6 g7 g8 b1 b2"
+model.Geom.Perm.Names =                "domain s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 g1 g2 g3 g4 g5 g6 g7 g8 b1 b2"
 
-model.Geom.Perm.Names =                "domain s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 g1 g2 g3 g4 g5 g6 b1 b2"
+# model.Geom.Perm.Names =                "domain s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 g1 g2 g3 g4 g5 g6 b1 b2"
 
 # Values in m/hour
 
@@ -238,26 +238,50 @@ model.Geom.g5.Perm.Value =           0.06
 model.Geom.g6.Perm.Type =           "Constant"
 model.Geom.g6.Perm.Value =           0.08
 
-#model.Geom.g7.Perm.Type =           "Constant"
-#model.Geom.g7.Perm.Value =           0.1
+model.Geom.g7.Perm.Type =           "Constant"
+model.Geom.g7.Perm.Value =           0.1
+
+model.Geom.g8.Perm.Type =           "Constant"
+model.Geom.g8.Perm.Value =           0.2
 #
-#model.Geom.g8.Perm.Type =           "Constant"
-#model.Geom.g8.Perm.Value =           0.2
-#
-model.Perm.TensorType =              "TensorByGeom"
+model.Perm.TensorType = 'TensorByGeom'
+model.Geom.Perm.TensorByGeom.Names = 'domain b1 b2 g1 g2 g4 g5 g6 g7'
 
-model.Geom.Perm.TensorByGeom.Names = "domain"
+model.Geom.domain.Perm.TensorValX = 1.0
+model.Geom.domain.Perm.TensorValY = 1.0
+model.Geom.domain.Perm.TensorValZ = 1.0
 
-model.Geom.domain.Perm.TensorValX =  1.0
-model.Geom.domain.Perm.TensorValY =  1.0
-model.Geom.domain.Perm.TensorValZ =  1.0
+model.Geom.b1.Perm.TensorValX = 1.0
+model.Geom.b1.Perm.TensorValY = 1.0
+model.Geom.b1.Perm.TensorValZ = 0.1
 
-# TODO uncomment
-# model.Geom.soil.Perm.TensorValX =  0.00001
-# model.Geom.soil.Perm.TensorValY =  0.00001
-# model.Geom.soil.Perm.TensorValX =  1.0
-# model.Geom.soil.Perm.TensorValY =  1.0
-# model.Geom.soil.Perm.TensorValZ =  1.0
+model.Geom.b2.Perm.TensorValX = 1.0
+model.Geom.b2.Perm.TensorValY = 1.0
+model.Geom.b2.Perm.TensorValZ = 0.1
+
+model.Geom.g1.Perm.TensorValX = 1.0
+model.Geom.g1.Perm.TensorValY = 1.0
+model.Geom.g1.Perm.TensorValZ = 0.1
+
+model.Geom.g2.Perm.TensorValX = 1.0
+model.Geom.g2.Perm.TensorValY = 1.0
+model.Geom.g2.Perm.TensorValZ = 0.1
+
+model.Geom.g4.Perm.TensorValX = 1.0
+model.Geom.g4.Perm.TensorValY = 1.0
+model.Geom.g4.Perm.TensorValZ = 0.1
+
+model.Geom.g5.Perm.TensorValX = 1.0
+model.Geom.g5.Perm.TensorValY = 1.0
+model.Geom.g5.Perm.TensorValZ = 0.1
+
+model.Geom.g6.Perm.TensorValX = 1.0
+model.Geom.g6.Perm.TensorValY = 1.0
+model.Geom.g6.Perm.TensorValZ = 0.1
+
+model.Geom.g7.Perm.TensorValX = 1.0
+model.Geom.g7.Perm.TensorValY = 1.0
+model.Geom.g7.Perm.TensorValZ = 0.1
 
 #-----------------------------------------------------------------------------
 # Specific Storage
@@ -320,7 +344,7 @@ model.TimeStep.Value =             1
 #-----------------------------------------------------------------------------
 # Porosity
 #-----------------------------------------------------------------------------
-model.Geom.Porosity.GeomNames =          "domain s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 g1 g2 g3 g4 g5 g6"
+model.Geom.Porosity.GeomNames =         'domain s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11 s12 s13 g1 g2 g3 g4 g5 g6 g7 g8'
 
 model.Geom.domain.Porosity.Type =        "Constant"
 model.Geom.domain.Porosity.Value =        0.33
@@ -381,6 +405,12 @@ model.Geom.g5.Porosity.Value =           0.33
 
 model.Geom.g6.Porosity.Type =           "Constant"
 model.Geom.g6.Porosity.Value =           0.33
+
+model.Geom.g7.Porosity.Type = 'Constant'
+model.Geom.g7.Porosity.Value = 0.33
+
+model.Geom.g8.Porosity.Type = 'Constant'
+model.Geom.g8.Porosity.Value = 0.33
 
 #-----------------------------------------------------------------------------
 # Domain
