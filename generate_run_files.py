@@ -517,12 +517,12 @@ model.Geom.s3.Saturation.SSat =         1.0
 
 model.Geom.s4.Saturation.Alpha =        0.501
 model.Geom.s4.Saturation.N =            2.659
-model.Geom.s4.Saturation.SRes =         0.0001
+model.Geom.s4.Saturation.SRes =         0.1
 model.Geom.s4.Saturation.SSat =         1.0
 
 model.Geom.s5.Saturation.Alpha =        0.661
 model.Geom.s5.Saturation.N =            2.659
-model.Geom.s5.Saturation.SRes =         0.1
+model.Geom.s5.Saturation.SRes =         0.0001
 model.Geom.s5.Saturation.SSat =         1.0
 
 model.Geom.s6.Saturation.Alpha =        1.122
@@ -754,3 +754,4 @@ model.Solver.PrintSubsurfData =                      True
 # pfwritedb $runname
 
 model.write()
+model.write(file_format='yaml')
