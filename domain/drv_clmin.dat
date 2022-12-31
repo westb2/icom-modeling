@@ -30,14 +30,14 @@ rstf           clm.rst.                               CLM active restart file
 startcode      2                                      1=restart file,2=defined
 sss            00                                     Starting Second
 smn            00                                     Starting Minute
-shr            01                                     Starting Hour
+shr            00                                     Starting Hour
 sda            01                                     Starting Day
 smo            10                                     Starting Month
 syr            2002                                   Starting Year
 !
 ess            00                                     Ending Second
 emn            00                                     Ending Minute
-ehr            00                                     Ending Hour
+ehr            23                                     Ending Hour
 eda            30                                     Ending Day
 emo            09                                     Ending Month
 eyr            2003                                   Ending Year

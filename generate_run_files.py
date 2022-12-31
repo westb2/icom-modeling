@@ -17,9 +17,11 @@ FB_FILE = "Shangguan_200m_FBZ.pfb"
 MANN_PFB = "icom_mannings_rv50_4_7_10_dec_mann.pfb"
 INITIAL_PRESSURE_FILE = "G1_Multi_EF_ShgFBz_200m_kz01_rv50_dec_mann_25inc.out.press.08760.pfb"
 DOMAIN_DIRECTORY = f"{PROJECT_PATH}/domain"
-# FORCING_DIRECTORY = "../../forcing/WY2003_forcing"
-FORCING_DIRECTORY = f"{PROJECT_PATH}/forcing/WY2003_forcing"
+FORCING_DIRECTORY = "/glade/scratch/tijerina/Subsurface_Paper/ICOM_Danielle/WY2003"
+#FORCING_DIRECTORY = f"{PROJECT_PATH}/forcing/WY2003_forcing"
 
+istep = 0
+clmstep = istep + 1
 
 model = Run("icom", __file__)
 
@@ -27,8 +29,8 @@ model = Run("icom", __file__)
 
 model.FileVersion = 4
 
-model.Process.Topology.P = 12
-model.Process.Topology.Q = 15
+model.Process.Topology.P = 24
+model.Process.Topology.Q = 27
 model.Process.Topology.R = 1
 
 
@@ -327,11 +329,10 @@ model.Gravity	=			1.0
 
 #
 model.TimingInfo.BaseUnit =        1
-model.TimingInfo.StartCount =      0
-model.TimingInfo.StartTime =       0
-model.TimingInfo.StopTime =        24#8760
-model.TimingInfo.DumpInterval =    1
-
+model.TimingInfo.StartCount =      istep
+model.TimingInfo.StartTime =       istep
+model.TimingInfo.StopTime =        24
+model.TimingInfo.DumpInterval =    1.0
 model.TimeStep.Type =             "Constant"
 model.TimeStep.Value =             1
 
@@ -648,11 +649,11 @@ model.Patch.top.BCPressure.Cycle = "constant"
 model.Patch.top.BCPressure.alltime.Value = 0.0
 
 # PmE flux
-#model.Solver.EvapTransFile True
-model.Solver.EvapTransFileTransient = True
+model.Solver.EvapTransFile False
+#model.Solver.EvapTransFileTransient = True
 
 #model.Solver.EvapTrans.FileName icom_rm_coast_PME3.pfb
-model.Solver.EvapTrans.FileName = f"{FORCING_DIRECTORY}/icom_ELM_p_et"
+#model.Solver.EvapTrans.FileName = f"{FORCING_DIRECTORY}/icom_ELM_p_et"
 
 #---------------------------------------------------------
 # Topo slopes
@@ -724,7 +725,35 @@ model.PhaseSources.water.Geom.domain.Value =            0.0
 
 model.KnownSolution  =                                  "NoKnownSolution"
 
+#-----------------------------------------------------------------------------------------
+# Set LSM parameters
+#-----------------------------------------------------------------------------------------
 
+model.Solver.LSM                   = 'CLM'
+model.Solver.CLM.CLMFileDir        = "clm_output/"
+model.Solver.CLM.Print1dOut        = False
+model.Solver.CLM.CLMDumpInterval   = 1
+
+model.Solver.CLM.MetForcing        = '3D'
+model.Solver.CLM.MetFileName       = 'NLDAS'
+model.Solver.CLM.MetFilePath       = FORCING_DIRECTORY 
+model.Solver.CLM.MetFileNT         = 24
+model.Solver.CLM.IstepStart        = clmstep
+
+model.Solver.CLM.EvapBeta          = 'Linear'
+model.Solver.CLM.VegWaterStress    = 'Saturation'
+model.Solver.CLM.ResSat            = 0.2
+model.Solver.CLM.WiltingPoint      = 0.2
+model.Solver.CLM.FieldCapacity     = 1.00
+model.Solver.CLM.IrrigationType    = 'none'
+
+model.Solver.CLM.RootZoneNZ        = 4
+model.Solver.CLM.SoiLayer          = 4
+model.Solver.CLM.ReuseCount        = 1
+model.Solver.CLM.WriteLogs         = False
+model.Solver.CLM.WriteLastRST      = False
+model.Solver.CLM.DailyRST          = True
+model.Solver.CLM.SingleFile        = True
 #-----------------------------------------------------------------------------
 # Set solver parameters
 #-----------------------------------------------------------------------------
@@ -756,11 +785,14 @@ model.Solver.Linear.Preconditioner =                      "PFMG"
 model.Solver.Linear.Preconditioner.PCMatrixType =         "PFSymmetric"
 
 
-model.Solver.PrintSubsurfData =                      True
+model.Solver.PrintSubsurfData =                     True
+model.Solver.PrintSaturation =                      True
+model.Solver.PrintPressure =                        True
+model.Solver.PrintSlopes =                          True
+model.Solver.PrintMannings =                        True
+model.Solver.PrintCLM =                             True
 #model.Solver.PrintSpecificStorage                   True
 #model.Solver.PrintMask                              True
-#model.Solver.PrintPressure                           True
-#model.Solver.PrintSaturation                        True
 #model.Solver.PrintPorosity                          True
 #model.Solver.PrintSlopes                            True
 
