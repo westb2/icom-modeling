@@ -3,7 +3,7 @@
 This project contains a framework for running parflow against the icom domain
 
 # Prepping a run
-To prep a run (create all the parflow inputs in the right place) execute
+To prep a run (create all the parflow inputs in the right place) activate your conda environment and execute
 
 ```prep_run.sh -n YOUR_RUN_NAME```
 

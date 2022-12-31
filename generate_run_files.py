@@ -16,7 +16,7 @@ PROJECT_PATH = os.getcwd() + "/../.."
 FB_FILE = "Shangguan_200m_FBZ.pfb"
 MANN_PFB = "icom_mannings_rv50_4_7_10_dec_mann.pfb"
 INITIAL_PRESSURE_FILE = "G1_Multi_EF_ShgFBz_200m_kz01_rv50_dec_mann_25inc.out.press.08760.pfb"
-DOMAIN_DIRECTORY = f"{PROJECT_PATH}/domain"
+DOMAIN_DIRECTORY = f"{PROJECT_PATH}/domain" #"/glade/p/univ/ucsm0002/ICOM_danielle/icom-modeling/domain"
 FORCING_DIRECTORY = "/glade/scratch/tijerina/Subsurface_Paper/ICOM_Danielle/WY2003"
 #FORCING_DIRECTORY = f"{PROJECT_PATH}/forcing/WY2003_forcing"
 
@@ -331,7 +331,7 @@ model.Gravity	=			1.0
 model.TimingInfo.BaseUnit =        1
 model.TimingInfo.StartCount =      istep
 model.TimingInfo.StartTime =       istep
-model.TimingInfo.StopTime =        24
+model.TimingInfo.StopTime =        8760
 model.TimingInfo.DumpInterval =    1.0
 model.TimeStep.Type =             "Constant"
 model.TimeStep.Value =             1
@@ -649,7 +649,7 @@ model.Patch.top.BCPressure.Cycle = "constant"
 model.Patch.top.BCPressure.alltime.Value = 0.0
 
 # PmE flux
-model.Solver.EvapTransFile False
+model.Solver.EvapTransFile = False
 #model.Solver.EvapTransFileTransient = True
 
 #model.Solver.EvapTrans.FileName icom_rm_coast_PME3.pfb
@@ -754,6 +754,7 @@ model.Solver.CLM.WriteLogs         = False
 model.Solver.CLM.WriteLastRST      = False
 model.Solver.CLM.DailyRST          = True
 model.Solver.CLM.SingleFile        = True
+model.Solver.WriteCLMBinary        = False
 #-----------------------------------------------------------------------------
 # Set solver parameters
 #-----------------------------------------------------------------------------
